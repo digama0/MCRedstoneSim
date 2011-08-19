@@ -1,0 +1,58 @@
+v2.2
+Added shadow block.
+Fixed "Save As..." bug.
+
+v2.1
+Added icon.
+Added missing-image and -sound support (which you should never have to experience).
+Made the save/open dialogs return to the folder of the last save, instead of My Documents.
+Added GIF export of full design (2 sec frames)
+
+v2.0
+Fixed pressure plate behavior so that it now acts like a switch while paused.
+Fixed minor pressure plate bugs.
+Added "ground level" information, now shown by the color of the layer number; expansion buttons use this to keep the ground level, regardless of the order of button pressing.
+Added "Zoom In" and "Zoom Out" buttons.
+Overhauled UI to include a status bar, toolbar, and menu (in place of the bank of buttons). Icons were created or borrowed from the Java LAF Graphics Repository.
+Added Look & Feel adjustment settings.
+Adjusted tooltip movement and partially fixed tooltip disappearing bug.
+Added XYZ tracking to status bar.
+Added opened file and modification tracking.
+
+v1.82
+Added an option to modify the "generic block" export type for .schematic files.
+Fixed bug introduced in v1.8 which caused "1/3-layer mode" buttons to fail.
+
+v1.8
+Added pressure plate and tooltip info tool.
+
+v1.7
+Added export of .schematic files.
+Aadded Escape from clone mode, automatic return to bottom of selection when placing clone.
+Fixed minor import bugs.
+
+v1.6
+Added import of .schematic and .dat.
+Added "Options" button with "Cyclic", "Natural wire connection", "ground switch", "1/2/3 layer" mode, and "show bridges".
+
+v1.5
+Added "torch over air", "torch over wire", "wire on block on block" tiles.
+Fixed palette compression bug.
+
+v1.41
+Fixed bug where torch blocks wire power flow, fixed double door behavior.
+
+v1.4
+Added scrollbars, "New" and "Clone" buttons, double doors, and a "hinge" indicator for doors to unambiguously indicate how they move and whether they are powered or not.
+Palette now resizes with the window.
+
+v1.31
+Fixed door bugs.
+Added block-on-block palette material.
+Made block, wire, torch, switch, and button palettes 1-high (instead of replacing above with air)
+
+v1.3
+Added button (timed switch, lasts 10 ticks), door (with open and close sounds)
+
+v1.2
+Initial public release
