@@ -11,6 +11,8 @@ Middle click on torches or switches to change the
 wall they are attached to.
 Use the scroll wheel to select a material from the
 palette.
+Hold the control key and hover the mouse over any tile
+in the field for more information on it.
 
 ----- Menus -----
 
@@ -156,7 +158,7 @@ Door: 2-high (unlike Minecraft, this door actually makes
 Shadow: special block (see below)
 
 Note that not all combinations of two materials
-stacked are represented here. In these cases (like torch 
+stacked are represented here. In these cases (like torch
 over torch, switch over plate) only the bottom object
 will be visible (although you can always use the level
 up button to get a complete picture).
