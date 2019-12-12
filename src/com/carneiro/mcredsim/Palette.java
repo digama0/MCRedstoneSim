@@ -1,5 +1,8 @@
 package com.carneiro.mcredsim;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public enum Palette {
 	air(Blocks.air),
@@ -52,5 +55,14 @@ public enum Palette {
 		pal1=a.toArray(new Palette[0]);
 		pal2=a2.toArray(new Palette[0]);
 		pal3=a3.toArray(new Palette[0]);
+	}
+
+	@Override
+	public String toString() {
+		String blocks = Arrays.stream(new Blocks[] { c, b, a }) // Order of blocks is inverted on field for some reason
+				.filter(Objects::nonNull)
+				.map(x -> x.name)
+                .collect(Collectors.joining(" on "));
+		return String.format("%s (%s)", blocks, name());
 	}
 }
