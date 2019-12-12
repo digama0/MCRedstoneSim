@@ -551,6 +551,7 @@ public class Viewport implements MouseWheelListener {
 		sLoc.setVisible(false);
 		stats.add(lCurrentPalette = new JLabel(""));
 		updateCurrentPaletteStatus();
+		stats.addSeparator();
 		stats.addGlue();
 		stats.addSeparator();
 		stats.add(lRed = new JLabel("0"));
