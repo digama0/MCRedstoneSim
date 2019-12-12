@@ -1,1 +1,5 @@
 /bin
+
+# IntelliJ IDEA
+workspace.xml
+.idea/dictionaries/*.xml
