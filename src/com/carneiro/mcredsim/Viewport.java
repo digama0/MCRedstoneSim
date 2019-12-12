@@ -46,7 +46,7 @@ public class Viewport implements MouseWheelListener {
 	int pal, scale=3, pScale=5, lyr=0, gd=0,
 		x, y, z, cloneMode=0, lastX, lastY, lastPX, lastPY;
 	int[] clone=null;
-	JLabel lLyr, lSz, lLoc, lRed, lTorch, lTot, tooltip;
+	JLabel lLyr, lSz, lLoc, lRed, lTorch, lTot, tooltip, lCurrentPalette;
 	JSeparator sLoc;
 	JButton tick, play;
 	JCheckBox c1Lyr, c3Lyr, cBridge, cWater;
@@ -260,7 +260,7 @@ public class Viewport implements MouseWheelListener {
 		for (int i=0;i<palArr.length;i++)
 			if (palArr[i]==Palette.wire)
 				pal = i;
-		frame = new JFrame(title); 
+		frame = new JFrame(title);
 		URL u=getClass().getResource("/images/Logo16.png");
 		if (u!=null)
 		{
@@ -432,7 +432,7 @@ public class Viewport implements MouseWheelListener {
 		JPanel main=new JPanel();
 		GroupLayout layout = new GroupLayout(main);
 		main.setLayout(layout);
-		
+
 		pView.setAlignmentX(Component.CENTER_ALIGNMENT);
 		JLabel lC=new JLabel(),lD=new JLabel();
 		layout.setHorizontalGroup(
@@ -549,6 +549,9 @@ public class Viewport implements MouseWheelListener {
 		sLoc = stats.addSeparator();
 		lLoc.setVisible(false);
 		sLoc.setVisible(false);
+		stats.add(lCurrentPalette = new JLabel(""));
+		updateCurrentPaletteStatus();
+		stats.addSeparator();
 		stats.addGlue();
 		stats.addSeparator();
 		stats.add(lRed = new JLabel("0"));
@@ -623,7 +626,7 @@ public class Viewport implements MouseWheelListener {
 			addMenuItem(menu, "Options...", VK_P, "Preferences",
 				CTRL, VK_COMMA, new ButtonAction(ButtonAction.OPT));
 			menu.addSeparator();
-			
+
 			menu2 = new JMenu("Look & Feel");
 			{
 				menu2.setMnemonic(VK_L);
@@ -889,6 +892,7 @@ public class Viewport implements MouseWheelListener {
 		pX/=9;
 		if (pX>=palArr.length) return;
 		pal=pX;
+		updateCurrentPaletteStatus();
 		pView.repaint();
 	}
 	public void mouseWheelMoved(MouseWheelEvent e)
@@ -899,6 +903,7 @@ public class Viewport implements MouseWheelListener {
 		{
 			int l=palArr.length;
 			pal=((pal+e.getWheelRotation())%l+l)%l; //have to mod twice because of possible negative nums
+			updateCurrentPaletteStatus();
 			pView.repaint();
 		}
 	}
@@ -967,7 +972,7 @@ public class Viewport implements MouseWheelListener {
 	public void updateTooltip()
 	{
 		int pX=lastPX/scale, pY=lastPY/scale;
-		if (lastPX<0 || lastPY<0 || 
+		if (lastPX<0 || lastPY<0 ||
 			pX<0 || pY<0 || pX>x*9 || pY>y*9)
 		{
 			lastX = lastY = -1;
@@ -1030,6 +1035,11 @@ public class Viewport implements MouseWheelListener {
 		tooltip.setText(s);
 		tooltip.setSize(tooltip.getPreferredSize());
 	}
+
+	public void updateCurrentPaletteStatus() {
+		lCurrentPalette.setText(palArr[pal].toString());
+	}
+
 	public void play(final boolean open) {
 		try {
 			URL u=getSound(open?"door_open.wav":"door_close.wav");
@@ -1231,7 +1241,7 @@ public class Viewport implements MouseWheelListener {
 			SAVE=2, OPEN=3, TICK=4, TICKALL=5, PLAYPAUSE=6,
 			LYR_UP=7, LYR_DN=8, ADJUST=9, OPT=10, CLONE_ESC=11,
 			ZOOM_IN=12, ZOOM_OUT=13, EXIT=14, SAVEAS=15, GIF=16;
-		
+
 		public int vers;
 		public ButtonAction(int v) {vers=v;}
 		public void actionPerformed(ActionEvent e) { doAction(); }
@@ -1253,6 +1263,7 @@ public class Viewport implements MouseWheelListener {
 					pView.repaint();
 					updateTooltip();
 					updateTitle();
+					updateCurrentPaletteStatus();
 					break;
 				case OPEN:
 					if (!areYouSure()) return;
@@ -1313,7 +1324,7 @@ public class Viewport implements MouseWheelListener {
 		public static final int CYCLIC=0, NEW_WIRE=1,
 			DUMMY_SW=2, LAYER1=3, LAYER3=4, BRIDGE=5,
 			WATER=6;
-	
+
 		public int vers;
 		public OptionAction(int v) {vers=v;}
 		public void itemStateChanged(ItemEvent e) {

@@ -8,6 +8,7 @@ Left click to erase tiles or activate switches.
 Right click to place the active material on the map.
 Middle click on torches or switches to change the wall they are attached to.
 Use the scroll wheel to select a material from the palette.
+Hold the control key and hover the mouse over any tile in the field for more information on it.
 
 ----- Menus -----
 
