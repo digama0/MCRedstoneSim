@@ -63,6 +63,11 @@ public enum Palette {
 				.filter(Objects::nonNull)
 				.map(x -> x.name)
                 .collect(Collectors.joining(" on "));
-		return String.format("%s (%s)", blocks, name());
+
+		if (this == Palette.bridge) {
+			return String.format("%s (%s)", blocks, name());
+		} else {
+			return blocks;
+		}
 	}
 }
