@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="MCRedstoneSim:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/MCRedstoneSim_jar</output-path>
+    <root id="archive" name="MCRedstoneSim.jar">
+      <element id="module-output" name="MCRedstoneSim" />
+    </root>
+  </artifact>
+</component>
